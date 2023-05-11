@@ -1,24 +1,24 @@
 [
    {
-     "name": "BNI",
+     "companyName": "BNI",
      "logoUrl": "https://example.com/bni-logo.png",
      "description": "Bank Negara Indonesia",
      "location": "Indonesia"
    },
    {
-     "name": "Coca-Cola",
+     "companyName": "Coca-Cola",
      "logoUrl": "https://example.com/coca-cola-logo.png",
      "description": "Coca-Cola Company",
      "location": "United States"
    },
    {
-     "name": "Samsung",
+     "companyName": "Samsung",
      "logoUrl": "https://example.com/samsung-logo.png",
      "description": "Samsung Group",
      "location": "South Korea"
    },
    {
-     "name": "Toyota",
+     "companyName": "Toyota",
      "logoUrl": "https://example.com/toyota-logo.png",
      "description": "Toyota Motor Corporation",
      "location": "Japan"
