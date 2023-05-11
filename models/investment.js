@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+
+const getRandomCode = require('../helpers/getRandomCode')
 module.exports = (sequelize, DataTypes) => {
   class Investment extends Model {
     /**
@@ -20,19 +22,49 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Investment.init({
-    investmentName: DataTypes.STRING,
-    CompanyId: DataTypes.INTEGER,
-    investmentType: DataTypes.STRING,
-    returnOnInvestment: DataTypes.INTEGER,
+    investmentName: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Name tidak boleh kosong!'
+        }
+      }
+    },
+    CompanyId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Company tidak boleh kosong!'
+        }
+      }
+    },
+    investmentType: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Type tidak boleh kosong!'
+        }
+      }
+    },
+    returnOnInvestment: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'ROI tidak boleh kosong!'
+        },
+        max: {
+          args: 10,
+          msg: 'ROI tidak boleh melebihi 10%'
+        }
+      }
+    },
     investmentCode: DataTypes.STRING
   }, {
     hooks: {
-      // beforeCreate: (instance, options) => {
-      //   instance.investmentName = `${Company.companyName} ${this.investmentName}`
-      // },
       beforeCreate: async (instance, options) => {
         const company = await sequelize.models.Company.findByPk(instance.CompanyId);
         instance.investmentName = `${company.companyName} ${instance.investmentName}`
+        instance.investmentCode = `${instance.CompanyId}-${getRandomCode()}`
       }
     },
     sequelize,

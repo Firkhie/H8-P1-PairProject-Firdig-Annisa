@@ -33,9 +33,16 @@ class Controller {
         .then(() => {
             res.redirect('/login')
         })
-        .catch((error) => {
-            console.error(error);
-          })
+        .catch((err) => {
+            let errors = []
+            if (err.name == 'SequelizeValidationError') {
+                err.errors.map(el => {
+                errors.push(el.message)
+                })
+            }
+            // res.render('register', { errors })
+            res.send(errors)
+        })
     }
 
     static getLogin(req, res){
@@ -80,11 +87,29 @@ class Controller {
     }
 
     static users(req, res){
-        Investment.findAll()
+        let searchQuery = req.query.search
+        // let search
+        let filter = {}
+        if (searchQuery) {
+            filter = {
+                investmentName: {
+                [Op.iLike]: `%${searchQuery}%`
+                }
+            }
+        }
+
+        Investment.findAll({
+            where: filter,
+            include: {
+                model: Company
+            }
+        })
         .then((investments) => {
+            // res.send(investments)
             res.render('users', { investments })
         })
         .catch((err) => {
+            console.log(err)
             res.send(err)
         })
     }
@@ -145,19 +170,27 @@ class Controller {
             res.redirect('/admins')
         })
         .catch((err) => {
-            console.log(err)
-            res.send(err)
+            let errors = []
+            if (err.name == 'SequelizeValidationError') {
+                err.errors.map(el => {
+                errors.push(el.message)
+                })
+            }
+            // res.render('add-investment', { errors })
+            res.send(errors)
         })
     }
 
     static getEditInvestment(req, res){
         const { InvestmentId } = req.params
+        let invest
         Investment.findByPk(InvestmentId)
         .then((investment) => {
+            invest = investment
             return Company.findAll()
-            .then((companies) => {
-                res.render('edit-investment', { InvestmentId, investment, companies })
-            })
+        })
+        .then((companies) => {
+            res.render('edit-investment', { InvestmentId, invest, companies })
         })
         .catch((err) => {
             res.send(err)
@@ -173,8 +206,14 @@ class Controller {
             res.redirect('/admins')
         })
         .catch((err) => {
-            console.log(err)
-            res.send(err)
+            let errors = []
+            if (err.name == 'SequelizeValidationError') {
+                err.errors.map(el => {
+                errors.push(el.message)
+                })
+            }
+            // res.render('edit-investment', { errors })
+            res.send(errors)
         })
     }
 

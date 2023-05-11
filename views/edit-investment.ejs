@@ -11,13 +11,13 @@
    <form action="/admins/investment/<%= InvestmentId %>/edit" method="post">
       <p>
          <label>Investment Name</label>
-         <input type="text" name="investmentName" value="<%= investment.investmentName %>">
+         <input type="text" name="investmentName" value="<%= invest.investmentName %>">
       </p>
       <p>
          <label>Company Name</label>
          <select name="CompanyId">
             <% companies.forEach(el => { %>
-               <option value="<%= el.id %>" <%= el.id == investment.CompanyId ? 'selected' : '' %>><%= el.companyName %></option>
+               <option value="<%= el.id %>" <%= el.id == invest.CompanyId ? 'selected' : '' %>><%= el.companyName %></option>
             <% }) %>
          </select>
       </p>
@@ -26,13 +26,13 @@
          <select name="investmentType">
             <% const types = [ 'Saham', 'Campuran', 'Obligasi' ] %>
             <% types.forEach(el => { %>
-               <option value="<%= el %>" <%= el == investment.investmentType ? 'selected' : '' %>><%= el %></option>
+               <option value="<%= el %>" <%= el == invest.investmentType ? 'selected' : '' %>><%= el %></option>
             <% }) %>
          </select>
       </p>
       <p>
          <label>Return Of Investment</label>
-         <input type="number" name="returnOnInvestment" value="<%= investment.returnOnInvestment %>">
+         <input type="number" name="returnOnInvestment" value="<%= invest.returnOnInvestment %>">
       </p>
       <p>
          <input type="submit" value="Submit">

@@ -7,8 +7,13 @@
    <title>Home</title>
 </head>
 <body>
+   <a href="/logout">Logout</a>
    <h1>Home</h1>
    <a href="/users/shows">Show Invested</a>
+   <form method="get">
+      <input type="text" name="search">
+      <input type="submit" value="Search">
+   </form>
    <table border="1">
       <thead>
          <tr>
@@ -16,6 +21,7 @@
             <th>Investment Name</th>
             <th>Investment Type</th>
             <th>ROI</th>
+            <th>Company Name</th>
             <th>Action</th>
          </tr>
       </thead>
@@ -26,6 +32,7 @@
                <td><%= el.investmentName %></td>
                <td><%= el.investmentType %></td>
                <td><%= el.returnOnInvestment %></td>
+               <td><%= el.Company.companyName %></td>
                <td>
                   <a href="">Invest</a>
                </td>
