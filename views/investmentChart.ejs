@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <h1>Investment ROI Chart</h1>
+    <h1>Investments with Highest ROI Last Month</h1>
 <div>
   <canvas id="myChart"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<%= chartData.labels %>
 
 <script>
     
@@ -25,10 +23,10 @@
     type: 'bar',
 
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Samsung Global High Yield Bond Fund', 'BNI-AM Indonesian Equity Fund', 'BNI-AM Indonesia Global Syariah Equity Fund', 'BNI-AM Dana Saham Inspiring Equity Fund', 'Coca-Cola Global Growth Fund'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'ROI Percentage',
+        data: [8, 7, 6, 5, 5],
         borderWidth: 1
       }]
     }
