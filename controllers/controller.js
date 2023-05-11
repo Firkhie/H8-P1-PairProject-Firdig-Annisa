@@ -1,6 +1,8 @@
 const { User, Investment, Company, MemberDetail } = require("../models");
 const { Op } = require('sequelize')
 const bcrypt = require('bcryptjs');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey('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');
 
 class Controller {
     static home(req, res){
@@ -79,6 +81,17 @@ class Controller {
                 const error = "invalid username/password"
                 return res.redirect(`/login?error=${error}`)
             }
+        })
+        .then(() => {
+            const msg = {
+                to: `${newUser.email}`,
+                from: 'siriusoya@gmail.com',
+                subject: 'Babat Registration',
+                text: 'Anda telah berhasil mendaftar di Babat',
+                html: '<p>Selamat, anda telah berhasil mendaftar di Babat</p>'
+              };
+              
+              sgMail.send(msg)
         })
         .catch((err) => {
             res.send(err)
