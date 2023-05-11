@@ -9,17 +9,17 @@ router.get('/register', Controller.register);
 
 router.get('/users', Controller.users);
 
-router.get('/users/:userId/company/:companyId/invest', Controller.getInvest);
+router.get('/users/:userId/company/:CompanyId/invest', Controller.getInvest);
 
-router.post('/users/:userId/company/:companyId/invest', Controller.postInvest);
+router.post('/users/:userId/company/:CompanyId/invest', Controller.postInvest);
 
 router.get('/admins', Controller.admins);
 
-router.get('/admins/investment/:investmentId/edit', Controller.getEditInvestment);
+router.get('/admins/investment/:InvestmentId/edit', Controller.getEditInvestment);
 
-router.post('/admins/investment/:investmentId/edit', Controller.postEditInvestment);
+router.post('/admins/investment/:InvestmentId/edit', Controller.postEditInvestment);
 
-router.get('/admins/investment/:investmentId/delete', Controller.getDeleteInvestment);
+router.get('/admins/investment/:InvestmentId/delete', Controller.getDeleteInvestment);
 
 router.get('/logout', Controller.logout);
 
