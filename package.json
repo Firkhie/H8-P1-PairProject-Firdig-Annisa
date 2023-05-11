@@ -1,0 +1,22 @@
+{
+  "name": "babat",
+  "version": "1.0.0",
+  "description": "1. Login / Register \r 2. Home (User) \r  - Show / Edit Profile\r  - Isi saldo (Saldo default: 0) \r  - Pilih investasi saham di company mana (Fitur sort: berdasarkan keuntungan terbanyak / terkecil pertahun)\r  - Melihat seluruh company yang telah diinvest dan melakukan divest pada salah satu company yang diinvest\r  - Logout\r 3. Home (Admin) \r  - Edit company (Nama, Gambar, Deskripsi, Keuntungan pertahun berapa %)\r  - Delete company\r  - Logout\r 4. Fitur MVP \r  - Setelah regristasi muncul email 'Terimakasih sudah memilih aplikasi Babat sebagai pilihan anda untuk melakukan investasi' (nodemailer)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "sequelize": "^6.31.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "^6.6.0"
+  }
+}

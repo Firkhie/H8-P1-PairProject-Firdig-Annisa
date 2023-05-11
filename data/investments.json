@@ -1,0 +1,62 @@
+[
+   {
+     "name": "BNI-AM Dana Saham Inspiring Equity Fund",
+     "companyId": 1,
+     "investmentType": "Saham",
+     "amount": 10000000
+   },
+   {
+     "name": "BNI-AM Indonesian Equity Fund",
+     "companyId": 1,
+     "investmentType": "Saham",
+     "amount": 5000000
+   },
+   {
+     "name": "BNI-AM Syariah Berimbang Fund",
+     "companyId": 1,
+     "investmentType": "Campuran",
+     "amount": 2500000
+   },
+   {
+     "name": "BNI-AM Indonesia Global Syariah Equity Fund",
+     "companyId": 1,
+     "investmentType": "Saham",
+     "amount": 15000000
+   },
+   {
+     "name": "Coca-Cola Corporate Bond",
+     "companyId": 2,
+     "investmentType": "Obligasi",
+     "amount": 8000000
+   },
+   {
+     "name": "Coca-Cola Global Equity Fund",
+     "companyId": 2,
+     "investmentType": "Saham",
+     "amount": 15000000
+   },
+   {
+     "name": "Coca-Cola Global Growth Fund",
+     "companyId": 2,
+     "investmentType": "Campuran",
+     "amount": 5000000
+   },
+   {
+     "name": "Samsung Bluechip Equity Fund",
+     "companyId": 3,
+     "investmentType": "Saham",
+     "amount": 10000000
+   },
+   {
+     "name": "Samsung Global High Yield Bond Fund",
+     "companyId": 3,
+     "investmentType": "Obligasi",
+     "amount": 7000000
+   },
+   {
+     "name": "Toyota Global Equity Fund",
+     "companyId": 4,
+     "investmentType": "Saham",
+     "amount": 12000000
+   }
+ ]

@@ -1,0 +1,14 @@
+[
+   {
+     "UserId": 1,
+     "name": "John Doe",
+     "gender": "Male",
+     "phoneNumber": "+1-202-555-0165"
+   },
+   {
+     "UserId": 2,
+     "name": "Jane Smith",
+     "gender": "Female",
+     "phoneNumber": "+1-202-555-0198"
+   }
+ ]
