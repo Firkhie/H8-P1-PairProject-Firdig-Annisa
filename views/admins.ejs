@@ -5,11 +5,12 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Home</title>
+   <link rel="stylesheet" href="admins.css">
 </head>
-<body>
-   <a href="/logout">Logout</a>
+<body style="position: relative; margin-top: 40px;">
+   <a href="/logout" style="position: absolute; right: 20px;"><button>Logout</button></a>
    <h1>Home</h1>
-   <a href="/admins/add">Add New Investment</a>
+   <a href="/admins/add" style="margin-left: 150px; padding-right: 30px;"><button>Add New Investment</button></a>
    <table border="1">
       <thead>
          <tr>
@@ -28,8 +29,8 @@
                <td><%= el.investmentType %></td>
                <td><%= el.getPercentage() %></td>
                <td>
-                  <a href="/admins/investment/<%= el.id %>/edit">Edit</a>
-                  <a href="/admins/investment/<%= el.id %>/delete">Delete</a>
+                  <a href="/admins/investment/<%= el.id %>/edit"><button>Edit</button></a>
+                  <a href="/admins/investment/<%= el.id %>/delete"><button>Delete</button></a>
                </td>
             </tr>
          <% }) %>
