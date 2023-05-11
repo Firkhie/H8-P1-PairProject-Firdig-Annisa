@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     investmentName: DataTypes.STRING,
     CompanyId: DataTypes.INTEGER,
     investmentType: DataTypes.STRING,
-    returnOnInvesment: DataTypes.INTEGER
+    returnOnInvestment: DataTypes.INTEGER,
+    investmentCode: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Investment',
