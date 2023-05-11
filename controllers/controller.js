@@ -80,7 +80,13 @@ class Controller {
     }
 
     static users(req, res){
-        
+        Investment.findAll()
+        .then((investments) => {
+            res.render('users', { investments })
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
 
     static getInvest(req, res){
@@ -92,11 +98,25 @@ class Controller {
     }
 
     static admins(req, res){
-        
+        Investment.findAll()
+        .then((investments) => {
+            res.render('admins', { investments })
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
 
     static getEditInvestment(req, res){
-        
+        const { InvestmentId } = req.params
+        Investment.findByPk(InvestmentId)
+        .then((investment) => {
+            // res.send(investment)
+            res.render('edit-investment', { InvestmentId, investment })
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
 
     static postEditInvestment(req, res){
@@ -104,7 +124,16 @@ class Controller {
     }
 
     static getDeleteInvestment(req, res){
-        
+        const { InvestmentId } = req.params
+
+        Investment.destroy({ where: { id: InvestmentId } })
+        .then(() => {
+            res.redirect('/admins')
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
     }
 
     static logout(req, res){

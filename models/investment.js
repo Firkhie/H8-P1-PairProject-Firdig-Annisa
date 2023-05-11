@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     returnOnInvestment: DataTypes.INTEGER,
     investmentCode: DataTypes.STRING
   }, {
+    // hooks: {
+    //   beforeCreate: (instance, options) => {
+    //     let newTitle = instance.title.split(' ').join('_').toLowerCase()
+    //     instance.isbn = `${newTitle}${instance.isbn}`;
+    //   },
+    // },
     sequelize,
     modelName: 'Investment',
   });
