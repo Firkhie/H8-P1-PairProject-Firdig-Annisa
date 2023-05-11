@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Babat</title>
+
+	
+
+</head>
+
+<body>
+	
+    <h1>Login</h1>
+
+    <br>
+    <% if(error) {%>
+        <p style="color:red"><%= error %></p>
+        <% } %>
+	<br>
+
+	<form action="/login" method="post">
+        <label for="username">Username</label>
+            <br>
+            <input type="text" id="username" name="username">
+            <br>
+            <br>
+
+            <label for="password">Password</label>
+            <br>
+            <input type="password" id="password" name="password">
+            <br>
+            <br>
+
+            
+
+            <br>
+            <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
