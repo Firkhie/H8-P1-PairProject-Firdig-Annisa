@@ -1,0 +1,29 @@
+/* Set font family and background color */
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f2f2f2;
+ }
+ 
+ /* Center the heading and add some padding */
+ h1 {
+   padding: 20px 0;
+ }
+ 
+ /* Style the buttons */
+ button {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 10px;
+   cursor: pointer;
+ }
+ 
+ /* Change button color on hover */
+ button:hover {
+   background-color: #3e8e41;
+ }

@@ -17,6 +17,15 @@ module.exports = (sequelize, DataTypes) => {
       Investment.belongsTo(models.Company)
     }
 
+    static showInvestmentWithCompany(Company, filter) {
+      return Investment.findAll({
+        where: filter,
+        include: {
+            model: Company
+        }
+      })
+    }
+
     getPercentage() {
       return `${this.returnOnInvestment}%`
     }
