@@ -8,7 +8,7 @@
 </head>
 <body>
    <h1>Home</h1>
-   <a href="">Add New Investment</a>
+   <a href="/admins/add">Add New Investment</a>
    <table border="1">
       <thead>
          <tr>
@@ -25,7 +25,7 @@
                <td><%= ++index %></td>
                <td><%= el.investmentName %></td>
                <td><%= el.investmentType %></td>
-               <td><%= el.returnOnInvestment %></td>
+               <td><%= el.getPercentage() %></td>
                <td>
                   <a href="/admins/investment/<%= el.id %>/edit">Edit</a>
                   <a href="/admins/investment/<%= el.id %>/delete">Delete</a>

@@ -14,6 +14,9 @@ router.post('/register', Controller.postRegister);
 
 router.get('/logout', Controller.logout);
 
+router.get('/users/shows', Controller.showInvested);
+
+
 router.get('/users/:userId/company/:CompanyId/invest', Controller.getInvest);
 
 router.post('/users/:userId/company/:CompanyId/invest', Controller.postInvest);
@@ -46,6 +49,10 @@ const admin = function logMethod (req, res, next) {
   }
 
 router.get('/users', member, Controller.users);
+
+router.get('/admins/add', Controller.getAddInvestment);
+
+router.post('/admins/add', Controller.postAddInvestment);
 
 router.get('/admins/investment/:InvestmentId/edit', Controller.getEditInvestment);
 

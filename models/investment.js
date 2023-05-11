@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Investment.belongsToMany(models.User, { through: 'UserInvesments' });
+      Investment.belongsToMany(models.User, { through: models.UserInvestment });
       Investment.belongsTo(models.Company)
+    }
+
+    getPercentage() {
+      return `${this.returnOnInvestment}%`
     }
   }
   Investment.init({
@@ -22,12 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     returnOnInvestment: DataTypes.INTEGER,
     investmentCode: DataTypes.STRING
   }, {
-    // hooks: {
-    //   beforeCreate: (instance, options) => {
-    //     let newTitle = instance.title.split(' ').join('_').toLowerCase()
-    //     instance.isbn = `${newTitle}${instance.isbn}`;
-    //   },
-    // },
+    hooks: {
+      // beforeCreate: (instance, options) => {
+      //   instance.investmentName = `${Company.companyName} ${this.investmentName}`
+      // },
+      beforeCreate: async (instance, options) => {
+        const company = await sequelize.models.Company.findByPk(instance.CompanyId);
+        instance.investmentName = `${company.companyName} ${instance.investmentName}`
+      }
+    },
     sequelize,
     modelName: 'Investment',
   });

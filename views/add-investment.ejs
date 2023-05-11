@@ -4,20 +4,20 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Edit Investment</title>
+   <title>Add Investment</title>
 </head>
 <body>
-   <h1>Edit Investment</h1>
-   <form action="/admins/investment/<%= InvestmentId %>/edit" method="post">
+   <h1>Add Investment</h1>
+   <form action="/admins/add" method="post">
       <p>
          <label>Investment Name</label>
-         <input type="text" name="investmentName" value="<%= investment.investmentName %>">
+         <input type="text" name="investmentName">
       </p>
       <p>
          <label>Company Name</label>
          <select name="CompanyId">
             <% companies.forEach(el => { %>
-               <option value="<%= el.id %>" <%= el.id == investment.CompanyId ? 'selected' : '' %>><%= el.companyName %></option>
+               <option value="<%= el.id %>"><%= el.companyName %></option>
             <% }) %>
          </select>
       </p>
@@ -26,13 +26,13 @@
          <select name="investmentType">
             <% const types = [ 'Saham', 'Campuran', 'Obligasi' ] %>
             <% types.forEach(el => { %>
-               <option value="<%= el %>" <%= el == investment.investmentType ? 'selected' : '' %>><%= el %></option>
+               <option value="<%= el %>"><%= el %></option>
             <% }) %>
          </select>
       </p>
       <p>
          <label>Return Of Investment</label>
-         <input type="number" name="returnOnInvestment" value="<%= investment.returnOnInvestment %>">
+         <input type="number" name="returnOnInvestment">
       </p>
       <p>
          <input type="submit" value="Submit">
