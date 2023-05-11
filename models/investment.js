@@ -20,6 +20,17 @@ module.exports = (sequelize, DataTypes) => {
     getPercentage() {
       return `${this.returnOnInvestment}%`
     }
+
+    
+    static showInvestmentWithCompany(Company, filter) {
+      return Investment.findAll({
+        where: filter,
+        include: {
+            model: Company
+        }
+      })
+    }
+
   }
   Investment.init({
     investmentName: {

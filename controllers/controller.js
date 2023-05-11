@@ -111,12 +111,7 @@ class Controller {
             }
         }
 
-        Investment.findAll({
-            where: filter,
-            include: {
-                model: Company
-            }
-        })
+        Investment.showInvestmentWithCompany(Company, filter)
         .then((investments) => {
             // res.send(investments)
             res.render('users', { investments })
