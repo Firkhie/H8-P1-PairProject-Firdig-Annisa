@@ -1,8 +1,7 @@
 const { User, Investment, Company, MemberDetail } = require("../models");
 const { Op } = require('sequelize')
 const bcrypt = require('bcryptjs');
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('');
+
 
 class Controller {
     static home(req, res){
@@ -31,17 +30,6 @@ class Controller {
             }
 
             return MemberDetail.create(newUserDetail)
-        })
-        .then(() => {
-            const msg = {
-                to: `${newUser.email}`,
-                from: 'siriusoya@gmail.com',
-                subject: 'Babat Registration',
-                text: 'Anda telah berhasil mendaftar di Babat',
-                html: '<p>Hello, this is a <strong>notification email</strong>!</p>'
-              };
-              
-              sgMail.send(msg)
         })
         .then(() => {
             res.redirect('/login')
@@ -123,13 +111,13 @@ class Controller {
     }
 
     static showInvested(req, res){
-        User.findByPk(3, {
+        User.findByPk(+req.session.userId, {
             include: {
                 model: Investment
             }
         })
         .then((users) => {
-            res.send(users)
+            res.render('user-investments', { users })
         })
         .catch((err) => {
             console.log(err)
@@ -138,13 +126,24 @@ class Controller {
     }
 
     static getInvest(req, res){
-        User.findByPk(3)
+        const { InvestmentId } = req.params
+        let userIn
+        User.findByPk(+req.session.userId)
         .then((user) => {
-            Investment.findByPk(1)
-            .then((investment) => {
-                user.addInvestment(investment);
-            });
-        });
+            userIn = user;
+            return Investment.findByPk(InvestmentId)
+        })
+        .then((investment) => {
+            return userIn.addInvestment(investment);
+        })
+        .then(() => {
+            res.redirect('/users/shows')
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
+        
     }
 
     static postInvest(req, res){
@@ -245,6 +244,34 @@ class Controller {
             } else {
                 res.redirect('/')
             }
+        })
+    }
+
+    static investmentsChart(req, res){
+        Investment.findAll()
+        .then((investments) => {
+            let inputLabels = []
+            let inputData = []
+            investments.forEach(el => {
+                inputLabels.push(el.id)
+                inputData.push(el.returnOnInvestment)
+            })
+            const chartData = {
+                labels: ['Label 1', 'Label 2', 'Label 3'],
+                datasets: [
+                  {
+                    label: 'Dataset 1',
+                    data: [10, 20, 30],
+                  },
+                ],
+              };
+              return chartData
+        })
+        .then((chartData) => {
+            res.render('investmentChart', { chartData })
+        })
+        .catch((err) => {
+            res.send(err)
         })
     }
 

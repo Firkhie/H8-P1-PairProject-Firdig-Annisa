@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    getPercentage() {
+    get roiPercentage() {
       return `${this.returnOnInvestment}%`
     }
 

@@ -60,9 +60,9 @@ router.post('/admins/investment/:InvestmentId/edit', Controller.postEditInvestme
 
 router.get('/admins/investment/:InvestmentId/delete', Controller.getDeleteInvestment);
 
-router.get('/users/:userId/company/:companyId/invest', member, Controller.getInvest);
+router.get('/users/investments/:InvestmentId/invest', member, Controller.getInvest);
 
-router.post('/users/:userId/company/:companyId/invest', member, Controller.postInvest);
+router.post('/users/investments/:InvestmentId/invest', member, Controller.postInvest);
 
 router.get('/admins', admin, Controller.admins);
 
@@ -71,5 +71,7 @@ router.get('/admins/investment/:investmentId/edit', admin, Controller.getEditInv
 router.post('/admins/investment/:investmentId/edit', admin, Controller.postEditInvestment);
 
 router.get('/admins/investment/:investmentId/delete', admin, Controller.getDeleteInvestment);
+
+router.get('/investmentschart', member, Controller.investmentsChart);
 
 module.exports = router
