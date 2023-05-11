@@ -9,11 +9,18 @@ router.get('/register', Controller.register);
 
 router.get('/users', Controller.users);
 
+router.get('/users/shows', Controller.showInvested);
+
+
 router.get('/users/:userId/company/:CompanyId/invest', Controller.getInvest);
 
 router.post('/users/:userId/company/:CompanyId/invest', Controller.postInvest);
 
 router.get('/admins', Controller.admins);
+
+router.get('/admins/add', Controller.getAddInvestment);
+
+router.post('/admins/add', Controller.postAddInvestment);
 
 router.get('/admins/investment/:InvestmentId/edit', Controller.getEditInvestment);
 
