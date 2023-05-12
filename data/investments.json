@@ -3,60 +3,70 @@
      "investmentName": "BNI-AM Dana Saham Inspiring Equity Fund",
      "CompanyId": 1,
      "investmentType": "Saham",
-     "returnOnInvestment": 5
+     "returnOnInvestment": 5,
+     "investmentCode": "1-1257806045035"
    },
    {
      "investmentName": "BNI-AM Indonesian Equity Fund",
      "CompanyId": 1,
      "investmentType": "Saham",
-     "returnOnInvestment": 7
+     "returnOnInvestment": 7,
+     "investmentCode": "1-8842806045035"
    },
    {
      "investmentName": "BNI-AM Syariah Berimbang Fund",
      "CompanyId": 1,
      "investmentType": "Campuran",
-     "returnOnInvestment": 3
+     "returnOnInvestment": 3,
+     "investmentCode": "1-9540806045035"
    },
    {
      "investmentName": "BNI-AM Indonesia Global Syariah Equity Fund",
      "CompanyId": 1,
      "investmentType": "Saham",
-     "returnOnInvestment": 6
+     "returnOnInvestment": 6,
+     "investmentCode": "1-7436806045035"
    },
    {
      "investmentName": "Coca-Cola Corporate Bond",
      "CompanyId": 2,
      "investmentType": "Obligasi",
-     "returnOnInvestment": 1
+     "returnOnInvestment": 1,
+     "investmentCode": "2-0014806045035"
    },
    {
      "investmentName": "Coca-Cola Global Equity Fund",
      "CompanyId": 2,
      "investmentType": "Saham",
-     "returnOnInvestment": 4
+     "returnOnInvestment": 4,
+     "investmentCode": "2-4768806045035"
    },
    {
      "investmentName": "Coca-Cola Global Growth Fund",
      "CompanyId": 2,
      "investmentType": "Campuran",
-     "returnOnInvestment": 5
+     "returnOnInvestment": 5,
+     "investmentCode": "2-1047806045035"
    },
    {
      "investmentName": "Samsung Bluechip Equity Fund",
      "CompanyId": 3,
      "investmentType": "Saham",
-     "returnOnInvestment": 2
+     "returnOnInvestment": 2,
+     "investmentCode": "3-6667806045035"
    },
    {
      "investmentName": "Samsung Global High Yield Bond Fund",
      "CompanyId": 3,
      "investmentType": "Obligasi",
-     "returnOnInvestment": 8
+     "returnOnInvestment": 8,
+     "investmentCode": "3-1257806045035"
    },
    {
      "investmentName": "Toyota Global Equity Fund",
      "CompanyId": 4,
      "investmentType": "Saham",
-     "returnOnInvestment": 5
+     "returnOnInvestment": 5,
+     "investmentCode": "4-7215806045035"
    }
  ]

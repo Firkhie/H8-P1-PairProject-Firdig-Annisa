@@ -1,39 +1,39 @@
 ## Tema : Finance Technology
 ## Name : Babat
-## Contoh : https://bibit.id/saham (Bagian 'Simulasikan Investasi Saham Kamu di Bibit')
+### Contoh : https://bibit.id/saham (Bagian 'Simulasikan Investasi Saham Kamu di Bibit')
 
 ## Flow Pemrograman
 
 1. Login / Register 
 2. Home (User) 
- - Show / Edit Profile
- - Isi saldo (Saldo default: 0) 
  - Pilih investasi saham di company mana (Fitur sort: berdasarkan keuntungan terbanyak / terkecil pertahun)
- - Melihat seluruh company yang telah diinvest dan melakukan divest pada salah satu company yang diinvest
+ - Melihat seluruh company yang telah diinvest
+ - Menampilkan chart ROI dari tertinggi ke rendah
  - Logout
 3. Home (Admin) 
- - Edit company (Nama, Gambar, Deskripsi, Keuntungan pertahun berapa %)
- - Delete company
+ - CRUD investment
  - Logout
 4. Fitur MVP 
- - Setelah regristasi muncul email 'Terimakasih sudah memilih aplikasi Babat sebagai pilihan anda untuk melakukan investasi' (nodemailer)
+ - Menampilkan chart ROI dari tertinggi ke rendah
                                  
 ## Routes
 
 | Method | Route                                    | Deskripsi                                                           |
 | :----- | :--------------------------------------- | :------------------------------------------------------------------ |
+| GET    | /                                        | Login atau Signup                                                   |
 | GET    | /login                                   | Form Login                                                          |
+| POST   | /login                                   |                                                                     |
 | GET    | /register                                | Form Register                                                       |
-| GET    | /users                                   | Menampilkan landing page `(Profil, saldo, seluruh tabel companies)` |
-| GET    | /users/:userId/balance                   | Form untuk menambahkan `Saldo` user                                 |
-| POST   | /users/:userId/balance                   | Update `Saldo` user                                                 |
-| GET    | /users/:userId/company/:companyId/invest | Melakukan `invest company` yang dipilih user                        |
-| GET    | /users/:userId/company                   | Menampilkan seluruh company yang telah diinvest oleh user           |
-| GET    | /users/:userId/company/:companyId/divest | Menghapus investasi user pada company yang dipilih                  |
-| GET    | /admins                                  | Menampilkan seluruh list company yang ada dan jumlah total user     |
-| GET    | /admins/company/:companyId/edit          | `Edit` pada company yang sudah ada                                  |
-| POST   | /admins/company/:companyId/edit          | `Update` company yang telah di edit                                 |
-| GET    | /admins/company/:companyId/delete        | `Delete` company dari daftar company yang ada                       |
+| POST   | /register                                |                                                                     |
+| GET    | /users                                   | Menampilkan `Home` sisi user / member                               |
+| GET    | /users/shows                             | Menampilkan `Investasi` apa saja yang dipilih user                  |
+| GET    | /users/:UserId/company/:CompanyId/invest | Melakukan `invest`                                                  |
+| POST   | /users/:UserId/company/:CompanyId/invest |                                                                     |
+| GET    | /admins                                  | Menampilkan `Home` sisi admin                                       |
+| GET    | /admins/investment/add                   | `Add` new investment                                                |
+| GET    | /admins/investment/:InvestmentId/edit    | `Edit` pada investment yang sudah ada                               |
+| POST   | /admins/investment/:InvestmentId/edit    | `Update` investment yang telah di edit                              |
+| GET    | /admins/investment/:InvestmentId/delete  | `Delete` investment dari daftar company yang ada                    |
 | GET    | /logout                                  | Logout                                                              |
 
 
@@ -42,9 +42,7 @@
 1. Seeder
   - Admin (Name, email, gender, password)
   - Companies
-
 2. Register (User only!) -> Create new user (Name, email, gender, password)
-
 ### User
 3. Login
 4. Read all companies
@@ -52,10 +50,8 @@
 6. Add balance
 7. Invest to selected company
 8. Divest selected company
-
 ### Admin
 9. Read all companies and total users invested to which companies
 10. Edit companies
 11. Delete companies
-
 12. Logout

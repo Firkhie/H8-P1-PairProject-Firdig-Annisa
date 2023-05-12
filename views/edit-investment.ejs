@@ -60,10 +60,30 @@
  input[type="submit"]:hover {
    background-color: #3e8e41;
  }
+
+ button {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ 
+ /* Change button color on hover */
+ button:hover {
+   background-color: #3e8e41;
+ }
    </style>
 </head>
 <body>
    <h1>Edit Investment</h1>
+   <a href="/admins" style="position: absolute; top: 40px; left: 1px;"><button>Back</button></a>
+
+   <p style="text-align: center; color: red;"><%= errors[0] %></p>
    <form action="/admins/investment/<%= InvestmentId %>/edit" method="post">
       <p>
          <label>Investment Name</label>

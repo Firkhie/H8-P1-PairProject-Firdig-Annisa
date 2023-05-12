@@ -9,7 +9,8 @@ class Controller {
     }
 
     static getRegister(req, res){
-        res.render('register')
+        let errors = []
+        res.render('register', { errors })
     }
 
     static postRegister(req, res){
@@ -41,8 +42,8 @@ class Controller {
                 errors.push(el.message)
                 })
             }
-            // res.render('register', { errors })
-            res.send(errors)
+            res.render('register', { errors })
+            // res.send(errors)
         })
     }
 
@@ -161,9 +162,10 @@ class Controller {
     }
 
     static getAddInvestment (req, res){
+        let errors = []
         Company.findAll()
         .then((companies) => {
-            res.render('add-investment', { companies })
+            res.render('add-investment', { companies, errors })
         })
         .catch((err) => {
             res.send(err)
@@ -183,13 +185,16 @@ class Controller {
                 errors.push(el.message)
                 })
             }
-            // res.render('add-investment', { errors })
-            res.send(errors)
+            Company.findAll()
+            .then((companies) => {
+                res.render('add-investment', { companies, errors })
+            })
         })
     }
 
     static getEditInvestment(req, res){
         const { InvestmentId } = req.params
+        let errors = []
         let invest
         Investment.findByPk(InvestmentId)
         .then((investment) => {
@@ -197,7 +202,7 @@ class Controller {
             return Company.findAll()
         })
         .then((companies) => {
-            res.render('edit-investment', { InvestmentId, invest, companies })
+            res.render('edit-investment', { InvestmentId, invest, companies, errors })
         })
         .catch((err) => {
             res.send(err)
@@ -207,7 +212,7 @@ class Controller {
     static postEditInvestment(req, res){
         const { investmentName, CompanyId, investmentType, returnOnInvestment } = req.body
         const { InvestmentId } = req.params
-        
+        // console.log(InvestmentId, 'INI CONSOLE LOG')
         Investment.update({ investmentName, CompanyId, investmentType, returnOnInvestment }, { where: { id: InvestmentId } })
         .then(() => {
             res.redirect('/admins')
@@ -219,8 +224,15 @@ class Controller {
                 errors.push(el.message)
                 })
             }
-            // res.render('edit-investment', { errors })
-            res.send(errors)
+            let invest
+            Investment.findByPk(InvestmentId)
+            .then((investment) => {
+                invest = investment
+                return Company.findAll()
+            })
+            .then((companies) => {
+                res.render('edit-investment', { InvestmentId, invest, companies, errors })
+            })
         })
     }
 
