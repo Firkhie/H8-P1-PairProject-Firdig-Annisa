@@ -83,7 +83,15 @@
    <h1>Add Investment</h1>
    <a href="/admins" style="position: absolute; top: 40px; left: 1px;"><button>Back</button></a>
 
-   <p style="text-align: center; color: red;"><%= errors[0] %></p>
+   <p style="text-align: center; color: red;">
+      <br>
+           <% errorMessage? errorMessage.split(',').forEach(errorMessage =>{ %>
+               <%= errorMessage %><br>
+               <% }): errorMessage %>
+               <br>
+               <br>
+      </p>
+
    <form action="/admins/add" method="post">
       <p>
          <label>Investment Name</label>

@@ -162,10 +162,10 @@ class Controller {
     }
 
     static getAddInvestment (req, res){
-        let errors = []
+        const errorMessage = req.query.errors;
         Company.findAll()
         .then((companies) => {
-            res.render('add-investment', { companies, errors })
+            res.render('add-investment', { companies, errorMessage })
         })
         .catch((err) => {
             res.send(err)
@@ -179,22 +179,21 @@ class Controller {
             res.redirect('/admins')
         })
         .catch((err) => {
-            let errors = []
-            if (err.name == 'SequelizeValidationError') {
-                err.errors.map(el => {
-                errors.push(el.message)
+            let errors = [];
+            if(err.name == 'SequelizeValidationError') {
+                err.errors.forEach(el => {
+                    errors.push(el.message);
                 })
+                res.redirect(`/admins/add?errors=${errors}`)
+            } else {
+                res.send(err)
             }
-            Company.findAll()
-            .then((companies) => {
-                res.render('add-investment', { companies, errors })
-            })
         })
     }
 
     static getEditInvestment(req, res){
         const { InvestmentId } = req.params
-        let errors = []
+        const errorMessage = req.query.errors;
         let invest
         Investment.findByPk(InvestmentId)
         .then((investment) => {
@@ -202,7 +201,7 @@ class Controller {
             return Company.findAll()
         })
         .then((companies) => {
-            res.render('edit-investment', { InvestmentId, invest, companies, errors })
+            res.render('edit-investment', { InvestmentId, invest, companies, errorMessage })
         })
         .catch((err) => {
             res.send(err)
@@ -210,29 +209,34 @@ class Controller {
     }
 
     static postEditInvestment(req, res){
-        const { investmentName, CompanyId, investmentType, returnOnInvestment } = req.body
+        const { InvestmentId } = req.params
+        let companies
+        let invest
+        Investment.findByPk(InvestmentId)
+        .then((investment) => {
+            invest = investment
+            return Company.findAll()
+        })
+        .then((company) => {
+            companies = company
+            const { investmentName, CompanyId, investmentType, returnOnInvestment } = req.body
         const { InvestmentId } = req.params
         // console.log(InvestmentId, 'INI CONSOLE LOG')
-        Investment.update({ investmentName, CompanyId, investmentType, returnOnInvestment }, { where: { id: InvestmentId } })
+        return Investment.update({ investmentName, CompanyId, investmentType, returnOnInvestment }, { where: { id: InvestmentId } })
+        })
         .then(() => {
             res.redirect('/admins')
         })
         .catch((err) => {
-            let errors = []
-            if (err.name == 'SequelizeValidationError') {
-                err.errors.map(el => {
-                errors.push(el.message)
+            let errors = [];
+            if(err.name == 'SequelizeValidationError') {
+                err.errors.forEach(el => {
+                    errors.push(el.message);
                 })
+                res.redirect(`/admins/investment/${InvestmentId}/edit?errors=${errors}`)
+            } else {
+                res.send(err)
             }
-            let invest
-            Investment.findByPk(InvestmentId)
-            .then((investment) => {
-                invest = investment
-                return Company.findAll()
-            })
-            .then((companies) => {
-                res.render('edit-investment', { InvestmentId, invest, companies, errors })
-            })
         })
     }
 
